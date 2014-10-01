@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd"
+	default-autowire="byType">
+	<bean id="logger" class="com.springtutorial.Logger" autowire="constructor" />
+	<bean id="fileWriter" class="com.springtutorial.FileWriter" />
+	<bean id="consoleWriter" class="com.springtutorial.ConsoleWriter" primary="true"/>
+	<!-- Lecture 19: Autowiring by Type (multiple Beans with same type would cause problems) -->
+	<bean id="consoleWriter2" class="com.springtutorial.ConsoleWriter" autowire-candidate="false"/>
+</beans>

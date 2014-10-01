@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	default-init-method="init" default-destroy-method="destroy"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+	<bean id="basket" class="com.springtutorial.FruitBasket" scope="singleton">
+		<constructor-arg name="name" value="Zoli's basket"></constructor-arg>
+		<constructor-arg>
+			<!-- Lecture 14: Setting List Properties -->
+			<list>
+				<value>apple</value>
+				<value>pineapple</value>
+				<value>lemon</value>
+			</list>
+		</constructor-arg>
+	</bean>
+	<bean id="jungle" class="com.springtutorial.Jungle">
+		<property name="largest" ref="elephant" />
+		<!-- Lecture 15: List of Beans -->
+		<property name="animals">
+			<list>
+				<ref bean="lion" />
+				<ref bean="elephant" />
+				<!-- Lecture 16: Inner Beans -->
+				<bean class="com.springtutorial.Animal">
+					<constructor-arg index="0" name="type" value="Snake" />
+					<constructor-arg index="1" name="name" value="V" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+	<bean name="lion" class="com.springtutorial.Animal">
+		<constructor-arg index="0" name="type" value="Lion" />
+		<constructor-arg index="1" name="name" value="Alex" />
+	</bean>
+	<bean name="elephant" class="com.springtutorial.Animal">
+		<constructor-arg index="0" name="type" value="Elephant" />
+		<constructor-arg index="1" name="name" value="June" />
+	</bean>
+</beans>
